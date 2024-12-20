@@ -1,17 +1,17 @@
 import React, { useState, useContext } from 'react';
-import { PencilSquareIcon, TrashIcon, EllipsisVerticalIcon } from '@heroicons/react/24/outline';
+import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 import MyContext from '../context/createContext';
 
-const Post = ({ post}) => {
+const Post = ({ post }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({
     stockname: post.stockname,
     ticker: post.ticker,
     quantity: post.quantity,
-    price: post.price
+    price: post.price,
   });
 
-  const {onUpdatestock,onDeletePost}=useContext(MyContext);
+  const { onUpdatestock, onDeletePost } = useContext(MyContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,25 +21,21 @@ const Post = ({ post}) => {
     }));
   };
 
-  const handledelete= async (e) =>{
+  const handleDelete = async (e) => {
     e.preventDefault();
     await onDeletePost(post._id);
-  }
+  };
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
-    await onUpdatestock(post._id, editData); 
-    setIsEditing(false); 
+    await onUpdatestock(post._id, editData);
+    setIsEditing(false);
   };
 
   return (
-    <div className="w-5/12 postlist h-5/12 mx-auto my-2 bg-white rounded-lg overflow-hidden">
-      
-      <div className="p-4 bg-white rounded-lg shadow-md border border-gray-200 max-w-md mx-auto">
-      <h3 className="text-lg font-semibold text-gray-800">
-        {post.stockname}
-      </h3>
-      <div className="mt-2">
+    <div className="w-full bg-white rounded-lg shadow-md p-6 mb-4 transition-all duration-300 ease-in-out hover:shadow-lg hover:bg-gray-50">
+      <div className="space-y-3">
+        <h3 className="text-xl font-semibold text-gray-800">{post.stockname}</h3>
         <p className="text-sm text-gray-500">
           <span className="font-medium">Ticker:</span> {post.ticker}
         </p>
@@ -47,86 +43,87 @@ const Post = ({ post}) => {
           <span className="font-medium">Quantity:</span> {post.quantity}
         </p>
         <p className="text-sm text-gray-500">
-          <span className="font-medium">Buy Price:</span> {post.price}
+          <span className="font-medium">Buy Price:</span> ${post.price}
         </p>
       </div>
-      
-    </div>
 
-      <div className="">
-        {isEditing && (
-          <form onSubmit={handleEditSubmit} className="flex flex-col gap-2">
-            <input
-              type="text"
-              name="stockname"
-              value={editData.stockname}
-              onChange={handleInputChange}
-              placeholder="First Name"
-              className="p-2 border border-gray-300 rounded mt-2"
-              required
-            />
-            <input
-              type="text"
-              name="ticker"
-              value={editData.ticker}
-              onChange={handleInputChange}
-              placeholder="Job Title"
-              className="p-2 border border-gray-300 rounded"
-              required
-            />
-            <input
-              type="number"
-              name="quantity"
-              value={editData.quantity}
-              onChange={handleInputChange}
-              placeholder="Email"
-              className="p-2 border border-gray-300 rounded"
-              required
-            />
-            <input
-              type="number"
-              name="price"
-              value={editData.price}
-              onChange={handleInputChange}
-              placeholder="Phone No."
-              className="p-2 border border-gray-300 rounded"
-              required
-            />
-            <button type="submit" className="mt-2 bg-indigo-500 text-white rounded-lg px-4 py-2">
+      {isEditing && (
+        <form onSubmit={handleEditSubmit} className="mt-4 space-y-3">
+          <input
+            type="text"
+            name="stockname"
+            value={editData.stockname}
+            onChange={handleInputChange}
+            placeholder="Stock Name"
+            className="w-full p-2 border border-gray-300 rounded-md"
+            required
+          />
+          <input
+            type="text"
+            name="ticker"
+            value={editData.ticker}
+            onChange={handleInputChange}
+            placeholder="Ticker"
+            className="w-full p-2 border border-gray-300 rounded-md"
+            required
+          />
+          <input
+            type="number"
+            name="quantity"
+            value={editData.quantity}
+            onChange={handleInputChange}
+            placeholder="Quantity"
+            className="w-full p-2 border border-gray-300 rounded-md"
+            required
+          />
+          <input
+            type="number"
+            name="price"
+            value={editData.price}
+            onChange={handleInputChange}
+            placeholder="Buy Price"
+            className="w-full p-2 border border-gray-300 rounded-md"
+            required
+          />
+          <div className="flex gap-4">
+            <button
+              type="submit"
+              className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"
+            >
               Save Changes
             </button>
             <button
               type="button"
               onClick={() => setIsEditing(false)}
-              className="mt-2 bg-gray-500 text-white rounded-lg px-4 py-1"
+              className="w-full py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition duration-300"
             >
               Cancel
             </button>
-          </form>
-        )}
-      </div>
+          </div>
+        </form>
+      )}
 
-      <div className="border-t border-gray-200 border-t-1 border-black">
-      <div className="flex justify-evenly">
-        <div
-          className="flex cursor-pointer justify-center p-2 w-full h-full"
-          onClick={() => setIsEditing(true)}
-           >
-          <PencilSquareIcon className="w-5 h-5 mr-1" />
-          <span className="text-sm font-semibold text-gray-800">Edit</span>
+      {/* Action Buttons */}
+      {!isEditing && (
+        <div className="flex justify-between mt-4">
+          <button
+            onClick={() => setIsEditing(true)}
+            className="flex items-center text-blue-500 hover:underline"
+          >
+            <PencilSquareIcon className="w-5 h-5 mr-2" />
+            Edit
+          </button>
+          <button
+            onClick={handleDelete}
+            className="flex items-center text-red-500 hover:underline"
+          >
+            <TrashIcon className="w-5 h-5 mr-2" />
+            Delete
+          </button>
         </div>
-        <div
-         className="flex cursor-pointer justify-center p-2 w-full h-full "
-          onClick={handledelete}
-        >
-          <TrashIcon className="w-5 h-5 mr-1" />
-          <span className="text-sm font-semibold text-gray-800">Delete</span>
-         </div>
-      </div>
-      </div>
+      )}
     </div>
   );
 };
 
 export default Post;
-

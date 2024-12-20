@@ -40,7 +40,7 @@ export const Myprovider=({children})=>{
         );
           const {stock}= await response.json();
           setconts(stock); 
-          setLoading(false); 
+          setLoading(false);
         } catch (error) {
           alert(error.message);
           setLoading(false);
