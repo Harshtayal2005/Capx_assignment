@@ -43,7 +43,7 @@ function HomePage() {
           <div>
             <label className="text-lg font-medium">Stock Name</label>
             <input
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full p-2 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
               type="text"
               name="stockname"
               value={formdata.stockname}
@@ -54,7 +54,7 @@ function HomePage() {
           <div>
             <label className="text-lg font-medium">Ticker</label>
             <input
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full p-2 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
               type="text"
               name="ticker"
               value={formdata.ticker}
@@ -65,7 +65,7 @@ function HomePage() {
           <div>
             <label className="text-lg font-medium">Quantity</label>
             <input
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full p-2 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
               type="number"
               name="quantity"
               value={formdata.quantity}
@@ -76,7 +76,7 @@ function HomePage() {
           <div>
             <label className="text-lg font-medium">Buy Price</label>
             <input
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full p-2 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
               type="number"
               name="price"
               value={formdata.price}
