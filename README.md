@@ -3,7 +3,7 @@
 This is a Portfolio Tracker application that allows users to manage and track their stock investments. Users can add stocks, view stock details, edit stock information, and delete stocks from their portfolio.
 
 ## **Deployed Application**
-You can access the live version of the application here:
+You can access the live version of the application here: https://capx-assignment-one.vercel.app/
 
 
 ## **Table of Contents**
@@ -37,8 +37,8 @@ Before you begin, make sure you have the following installed on your machine:
 
 1. Clone the repository:
    ```bash
-   git clone 
-   cd portfolio-tracker
+   git clone https://github.com/Harshtayal2005/Capx_assignment.git
+   cd <project name>
 2. Start the backend server:
    ```bash
     cd backend
@@ -48,7 +48,16 @@ Before you begin, make sure you have the following installed on your machine:
     cd frontend
     npm run dev
 
-
 ### License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+For further assistance, feel free to reach out! 🚀
+
+```
+harshtayal2005@gmail.com
+```
+
+
 
