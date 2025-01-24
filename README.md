@@ -4,7 +4,7 @@ This is a Portfolio Tracker application that allows users to manage and track th
 
 ## **Deployed Application**
 You can access the live version of the application here:
-https://simple-portfolio-tracker-yjyx.vercel.app/
+
 
 ## **Table of Contents**
 1. [Features](#features)
@@ -37,7 +37,7 @@ Before you begin, make sure you have the following installed on your machine:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/portfolio-tracker.git
+   git clone 
    cd portfolio-tracker
 2. Start the backend server:
    ```bash
